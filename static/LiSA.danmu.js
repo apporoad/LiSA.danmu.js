@@ -152,9 +152,21 @@ var danmuRun = (site) => {
 
 var realDanmu = () => {
     //每条弹幕发送间隔
-    var looper_time = 3 * 1000;
+    var looper_time =window.danmu.interval || 5 * 1000;
+    if(isNaN(looper_time)){
+       looper_time = 5* 1000; 
+    }
+    var looper_limit = 200;
+    var interval = looper_limit + looper_time
+    if(window.LiSADanmu.data && window.LiSADanmu.data.length){
+        interval = looper_limit + looper_time/window.LiSADanmu.data.length
+    }
+
     var index = 0
     function do_barrager() {
+        //是否开启弹幕
+        if(window.danmu.off)
+            return
         //时时获取情况
         if (window.danmu.data && typeof window.danmu.data == 'function') {
             new Promise((r, j) => {
@@ -172,7 +184,7 @@ var realDanmu = () => {
             }
         }
     }
-    setInterval(do_barrager, looper_time);
+    setInterval(do_barrager, interval);
 }
 
 
@@ -213,9 +225,8 @@ var showDialog = () => {
         dialog.remove();
 
         if (value) {
-            var danmuInfo = {
-                info: value
-            }
+            var danmuInfo = window.danmu.template || {}
+            danmuInfo.info = value
             // here to push to danmu
             //1. danmu
             if ($('body').barrager)

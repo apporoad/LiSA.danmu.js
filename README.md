@@ -16,12 +16,9 @@ npm i -g aok.js
 ## go test
 
 ```js
-
-window.danmu = {
-        url:'http://localhost:11540/',
-        test : false
-    }
-
+//config
+window.danmu = {id :'',url:'http://localhost:11540/'}
+//注入js
 var s = document.createElement("script");s.type = "text/javascript"; s.src=(window.danmu.url||window.danmu.site||'') + 'LiSA.danmu.js';document.getElementsByTagName("head")[0].appendChild(s);
 
 ```
@@ -36,6 +33,9 @@ var s = document.createElement("script");s.type = "text/javascript"; s.src=(wind
 较低版本浏览器未进行测试
 
 ## 无侵入式部署
-todo
+思路是采用代理层文本替换,如nginx的sub_filter 添加注入脚本，具体步骤略
 
+## 配置说明
+[details](./config.md)
 
+## 生产部署
