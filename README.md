@@ -22,7 +22,7 @@ window.danmu = {
         test : false
     }
 
-var s = document.createElement("script");s.type = "text/javascript"; s.src=(window.danmu.url||window.danmu.site) + 'LiSA.danmu.js';document.getElementsByTagName("head")[0].appendChild(s);
+var s = document.createElement("script");s.type = "text/javascript"; s.src=(window.danmu.url||window.danmu.site||'') + 'LiSA.danmu.js';document.getElementsByTagName("head")[0].appendChild(s);
 
 ```
 
@@ -31,5 +31,11 @@ var s = document.createElement("script");s.type = "text/javascript"; s.src=(wind
 2. 前端弹幕基于[jquery.barrager.js](https://github.com/yaseng/jquery.barrager.js)
 3. 弹窗控件采用[artDialog](https://github.com/aui/artDialog)
 
+## 兼容性
+浏览器必须支持 promise  
+较低版本浏览器未进行测试
+
 ## 无侵入式部署
 todo
+
+

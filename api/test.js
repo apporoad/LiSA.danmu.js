@@ -7,8 +7,10 @@ module.exports = {
         return "good day"
     },
     "@get" : () =>{
-        return {
+        return [{
             info:"i am backend Test"
-        }
+        },{
+            info : 'i am backend Test2'
+        }]
     }
 }

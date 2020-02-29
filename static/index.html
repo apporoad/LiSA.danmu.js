@@ -1,10 +1,59 @@
 <script>
     window.danmu = {
-        url: 'http://localhost:11540/',
+        id: '',  // 默认为相对url
+        url: 'http://localhost:11540/',  //danmu部署位置
         test: false,
-        offadd: false
+        offadd: false   //是否关闭弹幕按钮
     }
-    var s = document.createElement("script"); s.type = "text/javascript"; s.src = (window.danmu.url || window.danmu.site) + 'LiSA.danmu.js'; document.getElementsByTagName("head")[0].appendChild(s);
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     initData: [{ info: "初始化数组情况1" }, { info: "初始化数组情况2" }]
+    // }
+    // window.danmu = {
+    //     id : 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     initData: { info : "初始化对象情况"}, 
+    // }
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     initData: function(){ return [{info : "初始化普通函数1"},{info:'初始化普通函数2'}]}
+    // }
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     initData: function(){ return new Promise(r=>{
+    //         r([{info : "初始化promise函数1"},{info:'初始化promise函数2'}])})
+    //     }
+    // }
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     data: [{ info: "数组情况1" }, { info: "数组情况2" }]
+    // }
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     data: function(){
+    //         window.index = window.index || 1
+    //         return { info : '时时函数情况' + window.index++}
+    //     }
+    // }
+    // window.danmu = {
+    //     id: 'danmu-test',  // 默认为相对url
+    //     url: 'http://localhost:11540/',  //danmu部署位置
+    //     data: function(){
+    //         window.index = window.index || 1
+    //         return new Promise(r=>{
+    //             setTimeout(() => {
+    //                 r({ info : '时时异步函数情况' + window.index++})
+    //             }, 100);
+    //         })
+    //     }
+    // }
+
+    var s = document.createElement("script"); s.type = "text/javascript"; s.src = (window.danmu.url || window.danmu.site || '') + 'LiSA.danmu.js'; document.getElementsByTagName("head")[0].appendChild(s);
 </script>
 <style>
     * {
@@ -13,16 +62,15 @@
         color: #FF3099
     }
 
-    #div {
+    .div {
         width: 100%;
         height: 100%;
         background: pink;
-        position: absolute;
     }
 </style>
 
 <body>
-    <div id='div'>
+    <div id='part1' class='div'>
         <h1 align="center">hello good good day</h1>
         <h2 align="center">一行代码在你的任意html添加弹幕功能</h2>
         <h2 align="center">and add danmu @ your html by just one line code</h2>
