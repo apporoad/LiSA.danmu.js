@@ -11,8 +11,6 @@ easy add danmu to your html, inclue  frontend and backend
 ```bash
 npm i -g aok.js
 
-
-
 ```
 
 ## go test
@@ -28,9 +26,10 @@ var s = document.createElement("script");s.type = "text/javascript"; s.src=(wind
 
 ```
 
-
-
 ## 技术说明
 1. 后端引擎采用[aok.js](https://github.com/apporoad/aok.js.git)
 2. 前端弹幕基于[jquery.barrager.js](https://github.com/yaseng/jquery.barrager.js)
 3. 弹窗控件采用[artDialog](https://github.com/aui/artDialog)
+
+## 无侵入式部署
+todo
