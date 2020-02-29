@@ -191,7 +191,7 @@ var addDialog = (site) => {
     $("#div_danmu").css({
         width: "36px",
         height: "36px",
-        position: "absolute",
+        position: "fixed",
         background: "url(" + site + "css/danmu.png) no-repeat center center",
         "background-size": "100%",
         right: "20px",
