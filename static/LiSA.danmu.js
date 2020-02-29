@@ -1,5 +1,5 @@
 var LiSA = LiSA || {}
-LiSA.load = (path, type, title, callback) =>{
+LiSA.load = (path, type, title, callback) => {
     var s, i;
     if (!type) type = path.substr(path.lastIndexOf(".") + 1);
     if (type == "js") {
@@ -33,7 +33,7 @@ LiSA.load = (path, type, title, callback) =>{
 }
 
 //去除字符串尾部空格或指定字符  
-LiSA.trimEnd = function (str,c) {
+LiSA.trimEnd = function (str, c) {
     if (c == null || c == "") {
         var rg = /s/;
         var i = str.length;
@@ -56,7 +56,7 @@ setTimeout(() => {
     // here url
     var site = window.danmu.url || window.danmu.site || ''
     if (site) {
-        site = LiSA.trimEnd(site,'/') + '/'
+        site = LiSA.trimEnd(site, '/') + '/'
     }
     LiSA.load(site + 'css/barrager.css', 'css')
     LiSA.load(site + 'jquery.barrager.min.js', 'js')
@@ -64,16 +64,16 @@ setTimeout(() => {
     // is debug
     if (window.danmu.debug || window.danmu.test) {
         test()
-    }else{
+    } else {
         callbackend(site)
     }
 
     // is add off
-    if(!window.danmu.offadd){
-        LiSA.load(site + 'dialog.js','js',null)
-        setTimeout(()=>{
-
-        },300)
+    if (!window.danmu.offadd) {
+        LiSA.load(site + 'dialog.js', 'js', null)
+        setTimeout(() => {
+            addDialog(site)
+        }, 300)
     }
 }, 300);
 
@@ -98,7 +98,7 @@ var callbackend = (site) => {
             contentType: "application/json;charset=UTF-8",
             url: site + "test",
             success: function (result) {
-                if(result){
+                if (result) {
                     $('body').barrager(result);
                 }
             },
@@ -140,26 +140,35 @@ var test = () => {
 
 }
 
-var addDialog=()=>{
-    // add button
-    // add 
-
-
-      
-}
-
-var dialog =()=>{
+var addDialog = (site) => {
+    // add div for danmu.png 
+    $("body").append('<div title="发送弹幕" id="div_danmu"></div>')
+    // add css
+    $("#div_danmu").css({
+        width: "36px",
+        height: "36px",
+        position: "absolute",
+        background: "url(" + site +"css/danmu.png) no-repeat center center",
+        "background-size": "100%",
+        right: "20px",
+        bottom: "20px",
+        cursor: "pointer"
+    });
+    // add dialog
     var d = dialog({
-	title: '消息',
-	content: '<input id="property-returnValue-demo" value="1" />',
-	ok: function () {
-		var value = $('#property-returnValue-demo').val();
-		this.close(value);
-		this.remove();
-	}
+        title: '消息',
+        content: '<input id="property-returnValue-demo" value="1" />',
+        ok: function () {
+            var value = $('#property-returnValue-demo').val();
+            this.close(value);
+            //this.remove();
+        }
     });
     d.addEventListener('close', function () {
         alert(this.returnValue);
     });
-    d.show();
+    
+    $("#div_danmu").click(()=>{
+        d.show()
+    })
 }
