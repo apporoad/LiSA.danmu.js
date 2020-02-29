@@ -67,6 +67,14 @@ setTimeout(() => {
     }else{
         callbackend(site)
     }
+
+    // is add off
+    if(!window.danmu.offadd){
+        LiSA.load(site + 'dialog.js','js',null)
+        setTimeout(()=>{
+
+        },300)
+    }
 }, 300);
 
 // $import('LiSA.danmu.js','js')
@@ -130,4 +138,28 @@ var test = () => {
 
     }
 
+}
+
+var addDialog=()=>{
+    // add button
+    // add 
+
+
+      
+}
+
+var dialog =()=>{
+    var d = dialog({
+	title: '消息',
+	content: '<input id="property-returnValue-demo" value="1" />',
+	ok: function () {
+		var value = $('#property-returnValue-demo').val();
+		this.close(value);
+		this.remove();
+	}
+    });
+    d.addEventListener('close', function () {
+        alert(this.returnValue);
+    });
+    d.show();
 }

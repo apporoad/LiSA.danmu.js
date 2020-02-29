@@ -1,7 +1,8 @@
 <script>
     window.danmu = {
         url: 'http://localhost:11540/',
-        test: false
+        test: false,
+        offadd: false
     }
     var s = document.createElement("script"); s.type = "text/javascript"; s.src = (window.danmu.url || window.danmu.site) + 'LiSA.danmu.js'; document.getElementsByTagName("head")[0].appendChild(s);
 </script>
@@ -11,18 +12,36 @@
         padding: 0;
         color: #FF3099
     }
+
     #div {
         width: 100%;
         height: 100%;
         background: pink;
         position: absolute;
     }
+
+    .fresh {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        background: url(css/danmu.png) no-repeat center center;
+        background-size: 100%;
+        right: 20px;
+        bottom: 20px;
+        cursor: pointer;
+    }
 </style>
+
 <body>
     <div id='div'>
         <h1 align="center">hello good good day</h1>
         <h2 align="center">一行代码在你的任意html添加弹幕功能</h2>
         <h2 align="center">and add danmu @ your html by just one line code</h2>
         <h2 align="center">details @ <a href="https://github.com/apporoad/LiSA.danmu.js">LiSA.danmu.js</a></h2>
+    </div>
+
+
+    <div title="test" class="fresh">
+
     </div>
 </body>
