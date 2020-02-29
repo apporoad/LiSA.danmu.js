@@ -1,15 +1,11 @@
-function $import(path, type, title, callback) {
+var LiSA = LiSA || {}
+LiSA.load = (path, type, title, callback) =>{
     var s, i;
     if (!type) type = path.substr(path.lastIndexOf(".") + 1);
     if (type == "js") {
         var ss = document.getElementsByTagName("script");
         for (i = 0; i < ss.length; i++) {
-            if (ss[i].src && ss[i].src.indexOf(path) != -1 || ss[i].title == title) {
-                if (callback) {
-                    callback()
-                }
-                return ss[i];
-            }
+            if (ss[i].src && ss[i].src.indexOf(path) != -1 || ss[i].title == title) return ss[i]
         }
         s = document.createElement("script");
         s.type = "text/javascript";
@@ -19,12 +15,7 @@ function $import(path, type, title, callback) {
     else if (type == "css") {
         var ls = document.getElementsByTagName("link");
         for (i = 0; i < ls.length; i++) {
-            if (ls[i].href && ls[i].href.indexOf(path) != -1 || ls[i].title == title) {
-                if (callback) {
-                    callback()
-                }
-                return ls[i];
-            }
+            if (ls[i].href && ls[i].href.indexOf(path) != -1 || ls[i].title == title) return ls[i];
         }
         s = document.createElement("link");
         s.rel = "stylesheet";
@@ -42,16 +33,14 @@ function $import(path, type, title, callback) {
 }
 
 //去除字符串尾部空格或指定字符  
-String.prototype.trimEnd = function (c) {
+LiSA.trimEnd = function (str,c) {
     if (c == null || c == "") {
-        var str = this;
         var rg = /s/;
         var i = str.length;
         while (rg.test(str.charAt(--i)));
         return str.slice(0, i + 1);
     }
     else {
-        var str = this;
         var rg = new RegExp(c);
         var i = str.length;
         while (rg.test(str.charAt(--i)));
@@ -59,17 +48,18 @@ String.prototype.trimEnd = function (c) {
     }
 }
 
-$import('https://code.jquery.com/jquery-3.1.1.min.js', 'js', 'jquery')
+if (typeof jQuery == 'undefined')
+    LiSA.load('https://code.jquery.com/jquery-3.1.1.min.js', 'js', 'jquery')
 
 setTimeout(() => {
     window.danmu = window.danmu || {}
     // here url
     var site = window.danmu.url || window.danmu.site || ''
     if (site) {
-        site = site.trimEnd('/') + '/'
+        site = LiSA.trimEnd(site,'/') + '/'
     }
-    $import(site + 'css/barrager.css', 'css')
-    $import(site + 'jquery.barrager.min.js', 'js')
+    LiSA.load(site + 'css/barrager.css', 'css')
+    LiSA.load(site + 'jquery.barrager.min.js', 'js')
 
     // is debug
     if (window.danmu.debug || window.danmu.test) {
