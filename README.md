@@ -9,12 +9,23 @@ easy add danmu to your html, inclue  frontend and backend
 
 ## go run
 ```bash
+# install aok.js
 npm i -g aok.js
+# cd workspace
+mdkir temp 
+cd temp
+# download zip
+wget https://github.com/apporoad/LiSA.danmu.js/raw/master/LiSA.danmu.js.zip
+# run 
+aok LiSA.danmu.js.zip -r api -s static -w danmu
+
+# cat your data
+cat $(ls danmu/api/*.data)
 
 ```
 
 ## go test
-
+打开任意网页，进入开发者模式，粘帖以下代码
 ```js
 //config
 window.danmu = {id :'',url:'http://localhost:11540/'}
@@ -22,6 +33,9 @@ window.danmu = {id :'',url:'http://localhost:11540/'}
 var s = document.createElement("script");s.type = "text/javascript"; s.src=(window.danmu.url||window.danmu.site||'') + 'LiSA.danmu.js';document.getElementsByTagName("head")[0].appendChild(s);
 
 ```
+
+### 集成到页面
+html 注入 go test 的代码即可
 
 ## 技术说明
 1. 后端引擎采用[aok.js](https://github.com/apporoad/aok.js.git)
@@ -39,3 +53,5 @@ var s = document.createElement("script");s.type = "text/javascript"; s.src=(wind
 [details](./config.md)
 
 ## 生产部署
+
+参考 [aok.js deploy](https://github.com/apporoad/aok.js#how-to-deploy)
