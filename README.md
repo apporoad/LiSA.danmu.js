@@ -46,8 +46,10 @@ html 注入 go test 的代码即可
 浏览器必须支持 promise  
 较低版本浏览器未进行测试
 
-## 无侵入式部署
-思路是采用代理层文本替换,如nginx的sub_filter 添加注入脚本，具体步骤略
+## 无侵入式部署  no poaching deploy
+思路是采用代理层文本替换,如nginx的http_addition_module 添加注入脚本  
+具体步骤见 [deploy](./nginxDeploy.md)
+
 
 ## 配置说明
 [details](./config.md)
