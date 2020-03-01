@@ -1,7 +1,7 @@
 <div align=center><img src="https://raw.githubusercontent.com/apporoad/LiSA.danmu.js/master/static/css/danmu.png"/></div>  
 
 # LiSA.danmu.js
-easy add danmu to your html, inclue  frontend and backend  
+easy add danmu to your html, include  frontend and backend  
 一行代码在你的任意html添加弹幕功能  
 三分钟（或者更短）添加弹幕功能  
 三步添加弹幕功能  
