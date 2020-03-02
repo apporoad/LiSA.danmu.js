@@ -33,7 +33,7 @@ LiSA.load = (path, type, title, callback) => {
 }
 
 LiSA.getUrlRelativePath = (url) => {
-    if (LiSA.rUrl) return LiSA.rUrl
+    //if (LiSA.rUrl) return LiSA.rUrl
     var url = url || document.location.toString();
     var arrUrl = url.split("//");
     var start = arrUrl[1].indexOf("/");
@@ -42,7 +42,7 @@ LiSA.getUrlRelativePath = (url) => {
         relUrl = relUrl.split("?")[0];
     }
     // remanber
-    LiSA.rUrl = relUrl
+    //LiSA.rUrl = relUrl
     return relUrl;
 }
 
