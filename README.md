@@ -55,5 +55,12 @@ html 注入 go test 的代码即可
 [details](./config.md)
 
 ## 生产部署
-
+```
+mkdir -p  /data/danmu
+cd /data/danmu
+wget https://github.com/apporoad/LiSA.danmu.js/raw/master/LiSA.danmu.js.zip
+aok LiSA.danmu.js.zip -r api -s static -w site
+#test
+pm2 start --name danmu aok -- /data/danmu/site/api -s /data/danmu/site/static -p 11540
+```
 参考 [aok.js deploy](https://github.com/apporoad/aok.js#how-to-deploy)
